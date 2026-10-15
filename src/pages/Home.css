@@ -1,0 +1,265 @@
+/* ============ HERO (image LEFT + text RIGHT, seamless blend) ============ */
+.hero {
+  display: flex;
+  align-items: stretch;
+  min-height: 580px;
+  background: #F6F0E6;
+  border-bottom: 1px solid var(--border);
+}
+
+/* LEFT: Image */
+.hero-img {
+  flex: 0 0 46%;
+  position: relative;
+  overflow: hidden;
+  background: #F6F0E6;
+}
+
+.hero-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+/* ✨ MAGIC: Image ka right edge cream mein FADE ho jayega — koi line nazar nahi aayegi! */
+.hero-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg,
+    rgba(246, 240, 230, 0) 55%,
+    rgba(246, 240, 230, 0.45) 75%,
+    rgba(246, 240, 230, 0.85) 90%,
+    #F6F0E6 100%);
+  pointer-events: none;
+}
+
+/* RIGHT: Text panel — image ke fade color se EXACT match */
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 80px;
+  background: linear-gradient(90deg,
+    #F6F0E6 0%,
+    #FAF7F0 70%);
+}
+
+.hero-content h1 {
+  font-size: 46px;
+  line-height: 1.15;
+  margin: 14px 0 18px;
+}
+
+.hero-content p {
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 400px;
+}
+
+/* ============ CATEGORIES ============ */
+.categories { padding-top: 75px; }
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.category-card {
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  transition: all 0.35s ease;
+}
+
+.category-card:hover {
+  box-shadow: 0 14px 34px rgba(139, 116, 90, 0.18);
+  border-color: #E3D5C2;
+}
+
+.category-img { overflow: hidden; }
+
+.category-img img {
+  width: 100%;
+  aspect-ratio: 1 / 0.82;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.category-card:hover .category-img img {
+  transform: scale(1.07);
+}
+
+.category-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.category-arrow {
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-arrow {
+  transform: translateX(5px);
+}
+
+/* ============ BESTSELLERS ============ */
+.bestsellers { padding-top: 75px; }
+
+.bestsellers-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* ============ FEATURES STRIP ============ */
+.features {
+  margin-top: 80px;
+  background: #F3EADF;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 44px 24px;
+}
+
+.feature { text-align: center; }
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #EBDCC8;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.feature:hover .feature-icon {
+  background: var(--gold);
+  color: #fff;
+}
+
+.feature h4 {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.feature p {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 3px;
+}
+
+/* ============ RESPONSIVE (TABLET) ============ */
+@media (max-width: 900px) {
+
+  .hero {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* Mobile/tablet pe fade ki zaroorat nahi — image block hai */
+  .hero-img::after {
+    display: none;
+  }
+
+  .hero-img {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 380px;
+  }
+
+  .hero-content {
+    padding: 45px 40px;
+    background: #F6F0E6;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+/* ============ RESPONSIVE (MOBILE) ============ */
+@media (max-width: 560px) {
+
+  .hero-img {
+    height: 320px;
+  }
+
+  .hero-content {
+    padding: 40px 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .bestsellers-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .category-grid,
+  .products-grid {
+    gap: 14px;
+  }
+
+  .category-row {
+    padding: 11px 12px;
+    font-size: 12.5px;
+  }
+}

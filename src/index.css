@@ -1,0 +1,104 @@
+/* ============================================================
+   AURELLE — FINE JEWELLERY | GLOBAL STYLES
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Colors — LUNERA style palette */
+  --ivory: #FFFFFF;
+  --beige: #F8F5EF;
+  --champagne: #EDE6DA;
+  --gold: #B9975B;
+  --gold-dark: #9A7B44;
+  --gold-light: #E5CE9C;
+  --taupe: #6E5F4E;
+  --text-main: #2C2823;
+  --text-soft: #8A8177;
+  --border: #E8E1D5;
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--ivory);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; }
+
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Small uppercase label — "OUR COLLECTIONS" jaisa */
+.section-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Big serif heading — "Discover Your Style" jaisa */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  margin-top: 8px;
+}
+
+/* ============ BUTTONS ============ */
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 34px;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover { background: var(--gold-dark); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover { background: var(--gold); color: #fff; }
+
+/* Star rating */
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 13px; }
+
+/* Fade-up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeUp 0.7s ease both; }
+
+/* Elegant scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--beige); }
+::-webkit-scrollbar-thumb { background: var(--champagne); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+main { min-height: 70vh; }

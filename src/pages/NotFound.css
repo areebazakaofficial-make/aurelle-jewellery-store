@@ -1,0 +1,19 @@
+.notfound {
+  text-align: center;
+  padding: 90px 24px;
+}
+.notfound-code {
+  font-family: var(--font-heading);
+  font-size: 110px;
+  color: var(--champagne);
+  line-height: 1;
+  display: block;
+}
+.notfound h1 { font-size: 30px; margin: 10px 0 12px; }
+.notfound p { color: var(--text-soft); margin-bottom: 30px; }
+.notfound-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,60 @@
+/* ============ WISHLIST PAGE ============ */
+.wishlist { padding-top: 40px; }
+
+.wishlist-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+.wishlist-head h1 { font-size: 32px; }
+.wishlist-count {
+  color: var(--text-soft);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* ============ GRID ============ */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* ============ EMPTY STATE ============ */
+.wishlist-empty {
+  text-align: center;
+  padding: 70px 24px 90px;
+}
+
+.wishlist-empty-icon {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--champagne);
+  color: var(--gold-dark);
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist-empty h2 { font-size: 26px; }
+.wishlist-empty p {
+  color: var(--text-soft);
+  font-size: 14px;
+  margin: 10px 0 26px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+  .wishlist-head h1 { font-size: 26px; }
+}
+
+@media (max-width: 560px) {
+  .wishlist-grid { gap: 14px; }
+}
