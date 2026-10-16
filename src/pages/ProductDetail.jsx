@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { products } from '../data/products.js'
 import { useCart } from '../context/CartContext.jsx'
 import { useWishlist } from '../context/WishlistContext.jsx'
@@ -36,6 +36,7 @@ const specsByCategory = {
 
 function ProductDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const product = products.find((p) => p.id === Number(id))
 
   const { addToCart } = useCart()
@@ -88,6 +89,12 @@ function ProductDetail() {
     addToCart(product, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
+  }
+
+  // ⚡ Buy Now — add to cart + seedha checkout!
+  const handleBuyNow = () => {
+    addToCart(product, qty)
+    navigate('/checkout')
   }
 
   const accordions = [
@@ -156,7 +163,7 @@ function ProductDetail() {
             ))}
           </ul>
 
-          {/* Quantity + Add to Cart */}
+          {/* Quantity */}
           <div className="qty-row">
             <div className="qty-box">
               <button onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>−</button>
@@ -165,12 +172,22 @@ function ProductDetail() {
             </div>
           </div>
 
-          <button
-            className={`add-cart ${added ? 'added' : ''}`}
-            onClick={handleAdd}
-          >
-            {added ? '✓ Added to Cart' : 'Add to Cart'}
-          </button>
+          {/* Add to Cart + Buy Now side by side */}
+          <div className="buy-buttons">
+            <button
+              className={`add-cart ${added ? 'added' : ''}`}
+              onClick={handleAdd}
+            >
+              {added ? '✓ Added' : 'Add to Cart'}
+            </button>
+
+            <button
+              className="buy-now"
+              onClick={handleBuyNow}
+            >
+              Buy Now ⚡
+            </button>
+          </div>
 
           <div className="detail-actions">
             <button onClick={() => toggleWishlist(product)}>
